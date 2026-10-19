@@ -9,35 +9,27 @@ Total page weight: **~21 KB**, or **5.3 KB gzipped** (excluding the resume PDF).
 
 ## Deploy
 
-The repo has a GitHub Actions workflow at
-`.github/workflows/deploy.yml`. **Push to `main` and it deploys to Cloudflare
-automatically.** You should never need to run `wrangler deploy` by hand.
+Deploy is manual from your machine, the same way `ourwedding` and `brushie.sg`
+are done. There is no CI, no API token, and no GitHub secrets.
 
 ```bash
-git add .
-git commit -m "Update site"
-git push
+npm run deploy
 ```
 
-Watch it run under the **Actions** tab on GitHub.
+Wrangler authenticates through `wrangler login`, which runs an interactive
+OAuth flow once and caches the credential in your macOS keychain. If the deploy
+ever fails with an auth error, run `npx wrangler logout && npx wrangler login`
+to refresh it.
 
-### One-time setup in Cloudflare
+The site lives at the `*.workers.dev` URL that the deploy prints, until you
+attach the custom domain.
 
-The workflow needs two repository secrets. Create them at
-**Settings → Secrets and variables → Actions → New repository secret**:
+### Attaching codedbyed.com
 
-| Secret name | Value |
-|---|---|
-| `CLOUDFLARE_API_TOKEN` | see below |
-| `CLOUDFLARE_ACCOUNT_ID` | Cloudflare dashboard → Workers & Pages → Account ID |
+Your domain is already on Cloudflare's nameservers but currently has **no A or
+CNAME record**, so nothing resolves.
 
-To create the token: Cloudflare dashboard → **My Profile → API Tokens → Create
-Token** → **Edit Cloudflare Workers** template. That grants the two
-permissions the deploy needs.
-
-### One-time setup in wrangler.jsonc
-
-`routes` is commented out. Uncomment it so the deploy also attaches your domain:
+Uncomment `routes` in `wrangler.jsonc`, then deploy once:
 
 ```jsonc
 "routes": [
@@ -46,16 +38,13 @@ permissions the deploy needs.
 ]
 ```
 
-Cloudflare creates the DNS records automatically and provisions TLS. If it is
-rejected for DNS permissions, add the records by hand instead:
+Cloudflare creates the DNS records automatically and provisions TLS. If that
+is rejected for DNS permissions, add the records by hand instead:
 
 | Type | Name | Target | Proxy |
 |---|---|---|---|
 | CNAME | `@` | `codedbyed.<subdomain>.workers.dev` | Proxied (orange) |
 | CNAME | `www` | `codedbyed.<subdomain>.workers.dev` | Proxied (orange) |
-
-Your domain is already on Cloudflare's nameservers but currently has **no A or
-CNAME record**, so nothing resolves yet.
 
 ### Working locally
 
@@ -114,7 +103,6 @@ site/
 │   └── resume.pdf
 ├── src/index.js             # Worker, serves static assets
 ├── wrangler.jsonc           # config, incl. commented custom-domain routes
-├── .github/workflows/deploy.yml
 └── package.json
 ```
 
