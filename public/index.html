@@ -1,0 +1,271 @@
+<!doctype html>
+<!--
+  ============================================================================
+  codedbyed.com, personal site
+  ============================================================================
+
+  >>> REPLACE EVERYTHING MARKED [TODO] BEFORE GOING LIVE. <<<
+  Search this file for "TODO". They are listed in README.md too.
+
+  ---------------------------------------------------------------------------
+  CONFIDENTIALITY NOTE
+  Employer detail here stays at the level already public in your LinkedIn
+  profile. Do not add internal system names, data sources, roadmaps, client
+  names or unreleased plans. Describe capability and scope, not specifics.
+  ---------------------------------------------------------------------------
+
+  Zero dependencies. System fonts only. ~14KB total. No build step.
+  ============================================================================
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Edward Yi Wei Neo | Platform &amp; Cloud Architect</title>
+<meta name="description" content="Platform and Cloud Architect at Deutsche Bank. I build enterprise data platforms on Google Cloud for global private banking and wealth businesses.">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0d0f13" media="(prefers-color-scheme: dark)">
+
+<!-- Open Graph / social preview -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Edward Yi Wei Neo | Platform &amp; Cloud Architect">
+<meta property="og:description" content="Enterprise data platforms on Google Cloud for global private banking and wealth businesses.">
+<meta property="og:url" content="https://codedbyed.com/">
+<!-- [TODO] Add your OG image: public/og.png (1200x630). Until then social
+     previews will render without a picture. -->
+
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="canonical" href="https://codedbyed.com/">
+<link rel="stylesheet" href="styles.css">
+
+<script>
+  // Set theme before first paint so there is no flash of the wrong colour.
+  (function () {
+    try {
+      var saved = localStorage.getItem('theme');
+      var theme = saved || 'auto';
+      var resolved = theme === 'auto'
+        ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+        : theme;
+      document.documentElement.dataset.theme = resolved;
+    } catch (e) { /* private mode: fall through to CSS default */ }
+  })();
+</script>
+</head>
+
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <nav class="nav" aria-label="Primary">
+    <a class="brand" href="#top">Edward Yi Wei Neo</a>
+    <div class="nav-actions">
+      <a href="resume.pdf">Resume<span class="sr-only"> (PDF)</span></a>
+      <button id="theme-toggle" class="theme-toggle" type="button"
+              aria-label="Switch colour theme" title="Switch colour theme">
+        <span class="theme-icon" aria-hidden="true"></span>
+      </button>
+    </div>
+  </nav>
+</header>
+
+<main id="main">
+
+  <!-- ============================ HERO ============================ -->
+  <section class="hero" id="top">
+    <p class="eyebrow">Singapore</p>
+    <h1>Platform &amp; Cloud Architect</h1>
+    <p class="lede">
+      I build enterprise data platforms on Google Cloud for global private
+      banking and wealth businesses, turning regulatory, risk and commercial
+      requirements into systems that are reliable, auditable, and built to scale.
+    </p>
+    <ul class="social" aria-label="Elsewhere">
+      <li><a href="https://www.linkedin.com/in/edwardyiweineo/">LinkedIn</a></li>
+      <li><a href="https://github.com/codedbyed">GitHub</a></li>
+      <li><a href="mailto:neo.yiwei@gmail.com">Email</a></li>
+    </ul>
+  </section>
+
+  <!-- =========================== ABOUT ============================ -->
+  <section aria-labelledby="about-h">
+    <h2 id="about-h">About</h2>
+    <p>
+      Eight years at Deutsche Bank across data warehousing, cloud solution
+      architecture and the full software development lifecycle, progressing
+      from Graduate Engineer through Lead Engineer and Solutions Technical
+      Architect to AVP Platform Architect.
+    </p>
+    <p>
+      I currently hold architectural ownership of the bank's
+      <strong>One Data Platform Harmonised and Access Layer</strong>, and serve
+      as the Google Cloud architect for that platform. Earlier I built and
+      governed the regional data warehouse underpinning regulatory,
+      transactional and audit reporting, and architected Google Cloud data
+      solutions for the Private Bank.
+    </p>
+    <p>
+      I came to this from both sides of the table: a Bachelor of Commerce from
+      UNSW, and a Diploma in Information Technology from Ngee Ann Polytechnic.
+      That combination is deliberate: it lets me argue about both what a
+      platform should do and how it should be built.
+    </p>
+  </section>
+
+  <!-- ========================= EXPERIENCE ========================= -->
+  <section aria-labelledby="exp-h">
+    <h2 id="exp-h">Experience</h2>
+
+    <article class="entry">
+      <h3>
+        Platform Architect (AVP), One Data Platform
+        <span class="entry-meta">Deutsche Bank · 2026 – present</span>
+      </h3>
+      <ul>
+        <li>Architectural ownership of the <strong>One Data Platform Harmonised and Access Layer</strong>: the data harmonisation and governed access tier serving private banking and wealth business lines.</li>
+        <li>Google Cloud architect for the One Data Platform, converting regulatory, risk and commercial requirements into scalable cloud architecture on GCP.</li>
+        <li>Define target architecture and operating model, aligned to the bank's data strategy and regulatory obligations.</li>
+        <li>Work with data, engineering, risk and compliance stakeholders so designs meet the bank's standards for security, governance and auditability.</li>
+      </ul>
+    </article>
+
+    <article class="entry">
+      <h3>
+        Solutions Technical Architect · Lead Engineer · Graduate Engineer, Data
+        <span class="entry-meta">Deutsche Bank · 2018 – 2026</span>
+      </h3>
+      <ul>
+        <li>Built and evolved the regional data warehouse underpinning regulatory, transactional and audit reporting across Wealth Management APAC and the Private Bank.</li>
+        <li>Architected data models, pipelines and reporting layers that turned fragmented manual reporting into reliable, repeatable, auditable data flows.</li>
+        <li>Architected Google Cloud data solutions for the Private Bank: secure, governed, operationally sound deployments.</li>
+        <li>Coordinated upstream and downstream stakeholders and delivery teams across the full SDLC.</li>
+      </ul>
+      <p class="entry-note">
+        Two-time Deutsche Bank Recognition Award (2019, 2021) and Top
+        Performing Employee (2019).
+      </p>
+    </article>
+
+    <article class="entry">
+      <h3>
+        Earlier: engineering, consulting and command
+        <span class="entry-meta">2009 – 2018</span>
+      </h3>
+      <ul>
+        <li><strong>Co-Founder &amp; Director, Heartcode Pte Ltd</strong>: IT consultancy delivering technology and CRM solutions for non-profits.</li>
+        <li><strong>3rd Sergeant Commander, UAV Commander, Singapore Armed Forces</strong>: commanded a specialist platoon; Most Outstanding Specialist Commander (2014).</li>
+        <li><strong>QA Intern, Great Eastern Life</strong>: customer database implementation, test design and user acceptance.</li>
+      </ul>
+    </article>
+
+    <p><a class="more" href="resume.pdf">Full resume (PDF)</a></p>
+  </section>
+
+  <!-- ============================ WORK ============================ -->
+  <section aria-labelledby="work-h">
+    <h2 id="work-h">Selected work</h2>
+    <p class="section-intro">
+      Things I have built outside work. These are private repositories, so there
+      is no source link, but I am happy to walk through any of them. The
+      <a href="https://brushie.sg/">brushie.sg</a> site is the exception: the
+      code is private too, but the site itself is live.
+    </p>
+
+    <article class="entry">
+      <h3>Renewal Online Reborn <span class="entry-meta">Reverse engineering and browser tooling</span></h3>
+      <p>
+        A reverse-engineering toolkit and browser-based game and spawn editor
+        built from the shipped files of a 2003 traditional-Chinese game client.
+        Every data format was decoded from the original binaries and each one is
+        documented alongside the client function it was read from, so the
+        findings are reproducible rather than guesswork.
+      </p>
+      <p>
+        The interesting constraint was separation of concerns: the disc's
+        Chinese content is treated strictly as data and kept verbatim, while
+        every string the tool renders is English. That keeps re-exporting safe,
+        prevents a regeneration from clobbering a translation, and leaves the
+        original text available as a fallback.
+      </p>
+    </article>
+
+    <article class="entry">
+      <h3>Breadboard Display <span class="entry-meta">Arduino Uno R3, embedded systems</span></h3>
+      <p>
+        A hardware display project on an Arduino Uno R3 driving both seven-segment
+        numeric displays and a cluster of ST7735 TFT screens. Two daisy-chained
+        74HC595 shift registers handle the segment and digit lines, refreshed at
+        500Hz through a Timer2 interrupt, with the TFTs sharing the SPI bus.
+      </p>
+      <p>
+        It renders live Singapore weather from the Open-Meteo API with
+        day/night-aware icon detection, alongside clock and system statistics,
+        driven by a Python configuration layer that sets location, update
+        intervals and serial port. Good practice of separating hardware mapping,
+        display logic and configuration across the firmware and tooling.
+      </p>
+    </article>
+
+    <article class="entry">
+      <h3>Raspberry Pi homelab <span class="entry-meta">Infrastructure and operations</span></h3>
+      <p>
+        Self-hosted services and the operational tooling that keeps them running:
+        Dockerised services including MediaFlow and a VPN client, dynamic DNS
+        updates against a no-ip endpoint, and Wake-on-LAN scripts to bring hosts
+        up on demand.
+      </p>
+      <p>
+        A small, unglamorous slice of infrastructure, but it is the same
+        territory: repeatable configuration, monitoring by way of scripts, and
+        services that are expected to come back on their own.
+      </p>
+    </article>
+
+    <article class="entry">
+      <h3>Brushie.sg <span class="entry-meta">Singapore e-commerce, live product</span></h3>
+      <p>
+        A live consumer brand selling smart oral care in Singapore. I built and
+        run the site myself: a fast static front end with no framework and no
+        backend, deployed on Apache behind a redirect that forces HTTPS and
+        folds the www host onto the apex domain. Commerce runs through Lazada
+        and Shopee rather than a direct checkout.
+      </p>
+      <p>
+        A small site, but it is a real business rather than a demo, and running
+        one is a useful corrective to designing only inside large
+        organisations.
+      </p>
+      <p class="entry-links"><a href="https://brushie.sg/">brushie.sg</a></p>
+    </article>
+  </section>
+
+  <!-- =========================== CONTACT ========================== -->
+  <section aria-labelledby="contact-h">
+    <h2 id="contact-h">Contact</h2>
+    <p>
+      Open to conversations about platform architecture, data platforms in
+      regulated environments, and cloud modernisation in financial services.
+    </p>
+    <p class="contact-line">
+      <a href="mailto:neo.yiwei@gmail.com">neo.yiwei@gmail.com</a>
+      <!-- [TODO] Consider adding a Calendly or Cal.com link if you want
+           recruiters to book time directly. -->
+    </p>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <p>
+    Built by hand with HTML, CSS and a little JavaScript. No trackers, no
+    cookie banner, no analytics. <a href="https://codedbyed.com/">codedbyed.com</a>
+  </p>
+  <p class="footer-meta">
+    &copy; <span id="year">2026</span> Edward Yi Wei Neo
+  </p>
+</footer>
+
+<script src="main.js"></script>
+</body>
+</html>

@@ -1,0 +1,14 @@
+{
+  "name": "codedbyed",
+  "version": "1.0.0",
+  "private": true,
+  "description": "codedbyed.com: personal site on Cloudflare Workers",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "tail": "wrangler tail"
+  },
+  "devDependencies": {
+    "wrangler": "^4.0.0"
+  }
+}

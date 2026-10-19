@@ -1,0 +1,54 @@
+name: Deploy to Cloudflare Workers
+
+# Deploys on every push to main, and can be triggered manually from the
+# Actions tab. The repo can stay private: the repo is private, the deployed
+# site is public.
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+# Never let two deploys run at once (avoids a half-finished live site).
+concurrency:
+  group: deploy-production
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Validate config (no secrets touched)
+        run: npx wrangler deploy --dry-run
+
+      - name: Deploy to Cloudflare Workers
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+
+      - name: Verify the site is live
+        run: |
+          echo "Waiting for the edge to pick up the new build..."
+          sleep 10
+          STATUS=$(curl -s -o /dev/null -w '%{http_code}' https://codedbyed.com/ || true)
+          echo "codedbyed.com responded with HTTP $STATUS"
+          if [ "$STATUS" != "200" ]; then
+            echo "::warning::codedbyed.com did not return 200. Check the Worker domain"
+            echo "::warning::route and DNS in wrangler.jsonc and the Cloudflare dashboard."
+          fi

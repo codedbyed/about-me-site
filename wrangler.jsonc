@@ -1,0 +1,32 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "codedbyed",
+  "main": "src/index.js",
+  "compatibility_date": "2025-09-01",
+  "compatibility_flags": ["nodejs_compat"],
+
+  "assets": {
+    "directory": "./public",
+    "not_found_handling": "404-page"
+  },
+
+  // [TODO] Uncomment the block below to attach codedbyed.com to this Worker.
+  //
+  // With this set, `wrangler deploy` creates the DNS record for you. If your
+  // zone is on Cloudflare's free plan this works out of the box. If the
+  // deploy is rejected with a DNS permission error, create the records by
+  // hand in the Cloudflare dashboard instead:
+  //
+  //   apex   codedbyed.com      -> CNAME -> codedbyed.<subdomain>.workers.dev
+  //   www    www.codedbyed.com  -> CNAME -> codedbyed.<subdomain>.workers.dev
+  //
+  // Both proxied (orange cloud ON), so traffic terminates at Cloudflare and
+  // stays on HTTPS automatically.
+  //
+  // "routes": [
+  //   { "pattern": "codedbyed.com",    "custom_domain": true },
+  //   { "pattern": "www.codedbyed.com","custom_domain": true }
+  // ],
+
+  "observability": { "enabled": true }
+}
