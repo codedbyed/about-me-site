@@ -1,6 +1,9 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "codedbyed",
+  // Must match the Worker name in the Cloudflare dashboard, which is
+  // "about-me-site" and gives the live URL about-me-site.yiweineo.workers.dev.
+  // If these differ, each build deploys to a different Worker.
+  "name": "about-me-site",
   "main": "src/index.js",
   "compatibility_date": "2025-09-01",
   "compatibility_flags": ["nodejs_compat"],

@@ -9,27 +9,40 @@ Total page weight: **~21 KB**, or **5.3 KB gzipped** (excluding the resume PDF).
 
 ## Deploy
 
-Deploy is manual from your machine, the same way `ourwedding` and `brushie.sg`
-are done. There is no CI, no API token, and no GitHub secrets.
+Auto-deploy via **Cloudflare Workers Builds**, the same setup as `ourwedding`.
+You connect the repository in the Cloudflare dashboard once, and every push to
+`main` deploys. No CI, no API token, no GitHub secrets.
 
-```bash
-npm run deploy
-```
+1. Cloudflare dashboard → **Workers & Pages** → **Create application** → **GitHub**
+2. Authenticate with GitHub, then select the `codedbyed/about-me-site` repository
+3. Set the build settings below, then **Save and Deploy**
 
-Wrangler authenticates through `wrangler login`, which runs an interactive
-OAuth flow once and caches the credential in your macOS keychain. If the deploy
-ever fails with an auth error, run `npx wrangler logout && npx wrangler login`
-to refresh it.
+The site goes live at the `*.workers.dev` URL Cloudflare assigns.
 
-The site lives at the `*.workers.dev` URL that the deploy prints, until you
-attach the custom domain.
+### Build settings
+
+| Setting | Value |
+|---|---|
+| Build command | *(leave empty, there is no build step)* |
+| Deploy command | `npx wrangler deploy` (the default) |
+| Root directory | *(leave empty, repo root)* |
+
+The Cloudflare Workers and Pages GitHub App is already installed on your
+account from `ourwedding`, so `about-me-site` should already appear in the
+repository list.
+
+**Critical:** the Worker name in the dashboard must be exactly `codedbyed`, to
+match `"name"` in `wrangler.jsonc`. If they differ the build fails.
+
+If the deploy complains that wrangler is missing, set the build command to
+`npm ci`.
 
 ### Attaching codedbyed.com
 
 Your domain is already on Cloudflare's nameservers but currently has **no A or
 CNAME record**, so nothing resolves.
 
-Uncomment `routes` in `wrangler.jsonc`, then deploy once:
+Uncomment `routes` in `wrangler.jsonc`, push, and let the build run:
 
 ```jsonc
 "routes": [
@@ -46,12 +59,13 @@ is rejected for DNS permissions, add the records by hand instead:
 | CNAME | `@` | `codedbyed.<subdomain>.workers.dev` | Proxied (orange) |
 | CNAME | `www` | `codedbyed.<subdomain>.workers.dev` | Proxied (orange) |
 
-### Working locally
+### Deploying by hand instead
 
 ```bash
-npm install     # only wrangler, as a dev dependency
-npm run dev     # local preview at http://localhost:8787
-npm run tail    # stream Worker logs
+npm install
+npm run deploy     # uses your local wrangler login
+npm run dev        # local preview at http://localhost:8787
+npm run tail       # stream Worker logs
 ```
 
 ---

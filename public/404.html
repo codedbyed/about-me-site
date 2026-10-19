@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Page not found | Edward Yi Wei Neo</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/styles.css">
+<script>
+  (function () {
+    try {
+      var saved = localStorage.getItem('theme');
+      var resolved = (!saved || saved === 'auto')
+        ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+        : saved;
+      document.documentElement.dataset.theme = resolved;
+    } catch (e) {}
+  })();
+</script>
+</head>
+<body>
+
+<header class="site-header">
+  <nav class="nav" aria-label="Primary">
+    <a class="brand" href="/">Edward Yi Wei Neo</a>
+    <div class="nav-actions">
+      <a href="/resume.pdf">Resume</a>
+      <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Switch colour theme">
+        <span class="theme-icon" aria-hidden="true"></span>
+      </button>
+    </div>
+  </nav>
+</header>
+
+<main id="main">
+  <section class="hero">
+    <p class="eyebrow">404</p>
+    <h1>This page does not exist</h1>
+    <p class="lede">
+      The link is either out of date or mistyped. The rest of the site is still
+      where you left it.
+    </p>
+    <ul class="social">
+      <li><a href="/">Back to the homepage</a></li>
+      <li><a href="/resume.pdf">Resume</a></li>
+    </ul>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <p class="footer-meta">&copy; <span id="year">2026</span> Edward Yi Wei Neo</p>
+</footer>
+
+<script src="/main.js"></script>
+</body>
+</html>
